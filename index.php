@@ -58,7 +58,9 @@ if (isset($_POST['submit'])) {
 	<meta name="description" content="Kompleksowe usługi elektryczne w województwie śląskim. Instalacje, awarie 24/7, pomiary, modernizacje i biały montaż. Szybki dojazd, uprawnienia SEP.">
 	<meta name="keywords" content="elektryk śląsk, usługi elektryczne, instalacje elektryczne, pogotowie elektryczne, pomiary elektryczne, SobiVolt, wymiana rozdzielnicy">
 	<meta name="author" content="SobiVolt">
+	
 	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<style>
         /* Oficjalna paleta barw SobiVolt */
         :root {
@@ -537,14 +539,95 @@ if (isset($_POST['submit'])) {
             font-size: 20px;
         }
 
-        /* Stopka */
-        footer {
-            background-color: #070707;
+        /* --- NOWA STOPKA --- */
+        .site-footer {
+            background-color: #0d0d0d;
+            color: #d1d1d1;
+            padding: 60px 20px 20px;
+            font-size: 15px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-white);
+            font-size: 18px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent-yellow);
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .footer-col p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .footer-col strong {
+            color: var(--accent-yellow);
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Magiczne przyciski Social Media */
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background-color: transparent;
+            color: var(--accent-yellow);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-yellow);
+            color: #0d0d0d;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 25px 20px;
-            font-size: 14px;
-            color: var(--text-gray);
+            padding-top: 25px;
             border-top: 1px solid #1a1a1a;
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* Poprawka dla telefonów, żeby tekst był wyśrodkowany */
+        @media (max-width: 768px) {
+            .footer-col {
+                text-align: center;
+            }
+            .footer-col h4 {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .social-links {
+                justify-content: center;
+            }
         }
 
         /* Responsywność strony (RWD) */
@@ -750,17 +833,44 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    <div class="bottom-info-bar">
-        <div class="bottom-bar-container">
-            <div class="bottom-info-item"><span>⏱️</span> Szybki dojazd & Szybkie terminy</div>
-            <div class="bottom-info-item"><span>🏠</span> Domy</div>
-            <div class="bottom-info-item"><span>🏢</span> Mieszkania</div>
-            <div class="bottom-info-item"><span>💼</span> Firmy</div>
-        </div>
-    </div>
+    
 
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> SobiVolt. Wszelkie prawa zastrzeżone.</p>
+    <!-- Rozbudowana Stopka -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Kolumna 1: Kontakt -->
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p><strong>SobiVolt</strong></p>
+                <p>Czyżowice, woj. śląskie</p>
+                <p>Telefon: 0731 892 091</p>
+                <p>E-Mail: voltixsobina@gmail.com</p>
+            </div>
+
+            <!-- Kolumna 2: Godziny otwarcia -->
+            <div class="footer-col">
+                <h4>Godziny otwarcia</h4>
+                <p>Poniedziałek – Piątek:<br> 7:30 – 16:30</p>
+                <p>Sobota – Niedziela:<br> Dyżur (Awarie 24/7)</p>
+            </div>
+
+            <!-- Kolumna 3: Social Media (Magiczne przyciski) -->
+            <div class="footer-col">
+                <h4>Znajdź nas</h4>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@MiguUczyciel" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 SobiVolt. Wszelkie prawa zastrzeżone.</p>
+        </div>
     </footer>
 
 </body>
