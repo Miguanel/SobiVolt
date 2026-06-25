@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
         $message_sent = true; // Udajemy sukces przed botem
     } else {
         // --- WŁAŚCIWA WYSYŁKA DLA PRAWDZIWYCH UŻYTKOWNIKÓW ---
-        $to = "voltixsobina@gmail.com";
+        $to = "michauasota@gmail.com";
         $subject = "Nowe zapytanie ze strony SobiVolt - " . htmlspecialchars($_POST['name']);
         
         // Filtrowanie i czyszczenie danych wejściowych
