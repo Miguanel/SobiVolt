@@ -760,7 +760,12 @@ if (isset($_POST['submit'])) {
                 <h3>Pomiary Elektryczne</h3>
                 <p>Nie daj się zaskoczyć ubezpieczycielowi. Wykonujemy rzetelne pomiary i wystawiamy kompletne protokoły niezbędne przy odbiorach i przeglądach.</p>
             </div>
-
+			
+			<div class="service-card">
+                <div class="service-icon">❄️</div>
+                <h3>Montaż Klimatyzacji</h3>
+                <p>Kompleksowa instalacja układów Split i Multi-Split. Przeprowadzamy rygorystyczne próby szczelności, próżniowanie obwodu chłodniczego oraz doprowadzamy dedykowany obwód zasilania z osobnym zabezpieczeniem nadmiarowo-prądowym.</p>
+            </div>
         </div>
     </section>
 
