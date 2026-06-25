@@ -718,19 +718,15 @@ if (isset($_POST['submit'])) {
                 <?php endif; ?>
 
                 <form action="#kontakt" method="POST">
-				<div style="display:none;" aria-hidden="true">
-					<label for="website_url">Proszę zostawić to pole puste</label>
-					<input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
-				</div>
+					<div style="display:none;" aria-hidden="true">
+						<label for="website_url">Proszę zostawić to pole puste</label>
+						<input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+					</div>
 
-				<div class="form-group">
-					<label for="name">Imię, Nazwisko lub Nazwa firmy</label>
-					<input type="text" id="name" name="name" class="form-control" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
-				</div>
-                    <div class="form-group">
-                        <label for="name">Imię, Nazwisko lub Nazwa firmy</label>
-                        <input type="text" id="name" name="name" class="form-control" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
-                    </div>
+					<div class="form-group">
+						<label for="name">Imię, Nazwisko lub Nazwa firmy</label>
+						<input type="text" id="name" name="name" class="form-control" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
+					</div>
                     <div class="form-group">
                         <label for="phone">Numer telefonu</label>
                         <input type="tel" id="phone" name="phone" class="form-control" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ''; ?>" required>
