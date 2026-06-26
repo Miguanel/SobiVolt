@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
                 <a href="#o-firmie">O firmie</a>
                 <a href="#uslugi">Usługi</a>
                 <a href="#galeria">Galeria</a>
-                <a href="#kontakt">Contact</a>
+                <a href="#kontakt">Kontact</a>
             </nav>
         </div>
     </header>
