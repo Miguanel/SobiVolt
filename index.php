@@ -56,14 +56,13 @@ if (isset($_POST['submit'])) {
 	<link rel="icon" type="image/png" href="favicon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Linkowanie nowego pliku z wyglądami -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="sticky-contact">
         <a href="tel:+48731892091" class="sticky-item">📞 <span>731 892 091</span></a>
-        <a href="#kontakt" class="sticky-item">✉️ <span>Napisz wiadomość</span></a>
+        <a href="#contact" class="sticky-item">✉️ <span>Napisz wiadomość</span></a>
     </div>
 
     <header>
@@ -73,10 +72,10 @@ if (isset($_POST['submit'])) {
                 <span class="logo-text">Sobi<span class="text-yellow">Volt</span></span>
             </a>
             <nav>
-                <a href="#o-firmie">O firmie</a>
-                <a href="#uslugi">Usługi</a>
-                <a href="#galeria">Galeria</a>
-                <a href="#kontakt">Kontact</a>
+                <a href="#about">O firmie</a>
+                <a href="#services">Usługi</a>
+                <a href="#gallery">Galeria</a>
+                <a href="#contact">Kontakt</a>
             </nav>
         </div>
     </header>
@@ -84,14 +83,14 @@ if (isset($_POST['submit'])) {
     <section class="hero">
         <h1>Kompleksowe <span>Usługi Elektryczne</span></h1>
         <p>Profesjonalne wykonawstwo dla domów, mieszkań i firm.</p>
-        <a href="#kontakt" class="btn-cta">Darmowa Wycena</a>
+        <a href="#contact" class="btn-cta">Darmowa Wycena</a>
     </section>
 
     <div class="features-bar">
         Solidnie • Terminowo • Fachowo
     </div>
 
-    <section id="o-firmie" class="section-container animate-on-scroll">
+    <section id="about" class="section-container animate-on-scroll">
         <h2 class="section-title">O firmie</h2>
         <div class="about-box">
             <p>Twój zaufany partner w branży elektroinstalacyjnej<br><br>
@@ -102,7 +101,7 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    <section id="uslugi" class="section-container">
+    <section id="services" class="section-container">
         <h2 class="section-title">Nasze Usługi</h2>
         <div class="services-grid">
             
@@ -162,7 +161,7 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    <section id="galeria" class="gallery-section">
+    <section id="gallery" class="gallery-section">
         <div class="container">
             <h2 class="section-title">Nasze Realizacje</h2>
             <p class="section-subtitle">Zobacz przykłady naszych ostatnich prac instalacyjnych, pomiarowych i wykończeniowych.</p>
@@ -209,7 +208,7 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    <section id="kontakt" class="section-container">
+    <section id="contact" class="section-container">
         <h2 class="section-title">Kontakt</h2>
         <div class="contact-layout">
             
@@ -235,7 +234,7 @@ if (isset($_POST['submit'])) {
                     <div class="alert alert-danger"><?php echo $error_message; ?></div>
                 <?php endif; ?>
 
-                <form action="#kontakt" method="POST">
+                <form action="#contact" method="POST">
                     <div style="display:none;" aria-hidden="true">
                         <label for="website_url">Proszę zostawić to pole puste</label>
                         <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
@@ -308,7 +307,6 @@ if (isset($_POST['submit'])) {
         <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
-    <!-- Linkowanie nowego pliku z animacjami i mechaniką -->
     <script src="script.js"></script>
 </body>
 </html>
