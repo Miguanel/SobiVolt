@@ -333,32 +333,75 @@ if (isset($_POST['submit'])) {
             line-height: 1.6;
         }
 
-        /* Sekcja: Galeria */
+        /* --- GALERIA REALIZACJI --- */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: #121212; /* Ciemne tło, by zdjęcia lepiej się odznaczały */
+        }
+
+        .gallery-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--text-white);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
         .gallery-item {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-gray);
-            height: 240px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            font-size: 14px;
-            font-style: italic;
-            background-size: cover;
-            background-position: center;
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4 / 3; /* Zapewnia identyczne proporcje wszystkich kafelków */
+            background-color: #1a1a1a;
+            cursor: pointer;
         }
-        
-        .gallery-item:hover {
-            border-color: var(--accent-yellow);
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Elegancko przycina zdjęcia poziome i pionowe */
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 25px 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            color: var(--accent-yellow);
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            transition: bottom 0.4s ease;
+        }
+
+        /* Efekty po najechaniu myszką */
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            bottom: 0;
+        }
         }
 
         /* Sekcja: Kontakt + Layout Formularza */
@@ -769,13 +812,53 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    <section id="galeria" class="section-container">
-        <h2 class="section-title">Galeria Realizacji</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" style="background-color: #1a1a1a;">[Zdjęcie: Nowa Rozdzielnica]</div>
-            <div class="gallery-item" style="background-color: #1a1a1a;">[Zdjęcie: Montaż oświetlenia salonu]</div>
-            <div class="gallery-item" style="background-color: #1a1a1a;">[Zdjęcie: Okablowanie obiektu]</div>
-            <div class="gallery-item" style="background-color: #1a1a1a;">[Zdjęcie: Prace pomiarowe]</div>
+    <!-- Sekcja Galerii -->
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Nasze Realizacje</h2>
+            <p class="section-subtitle">Zobacz przykłady naszych ostatnich prac instalacyjnych, pomiarowych i wykończeniowych.</p>
+
+            <div class="gallery-grid">
+                <!-- Kategoria 1: Rozdzielnice, Automatyka i Pomiary -->
+                <div class="gallery-item">
+                    <img src="rozdzielnia.jpg" alt="Kompleksowa rozdzielnica elektryczna">
+                    <div class="gallery-overlay"><span>Montaż i szycie rozdzielnicy</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="bezpieczniki.jpg" alt="Nowoczesna rozdzielnica mieszkaniowa">
+                    <div class="gallery-overlay"><span>Aparatura modułowa w praktyce</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="okablowanie_bezpiecznikow.JPG" alt="Okablowanie bezpieczników">
+                    <div class="gallery-overlay"><span>Precyzyjne układanie przewodów</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="pomiar.jpg" alt="Pomiary elektryczne">
+                    <div class="gallery-overlay"><span>Diagnostyka i pomiary sieci</span></div>
+                </div>
+
+                <!-- Kategoria 2: Oświetlenie, Biały Montaż i Smart Home -->
+                <div class="gallery-item">
+                    <img src="schody_lampy_wewn.jpg" alt="Oświetlenie schodów">
+                    <div class="gallery-overlay"><span>Efektowny żyrandol klatki schodowej</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="schody_lampy_zewn.jpg" alt="Oświetlenie schodów z góry">
+                    <div class="gallery-overlay"><span>Precyzyjny montaż na wysokościach</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="kuchnia_lampy.jpg" alt="Oświetlenie w kuchni">
+                    <div class="gallery-overlay"><span>Oświetlenie wyspy kuchennej</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="pokoj_lampy.jpg" alt="Oświetlenie sufitowe LED">
+                    <div class="gallery-overlay"><span>Oprawy wpuszczane LED</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="przelacznik.jpg" alt="Przełącznik Somfy">
+                    <div class="gallery-overlay"><span>Systemy Smart Home (Somfy)</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
