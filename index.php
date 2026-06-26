@@ -706,16 +706,17 @@ if (isset($_POST['submit'])) {
 		
 		/* --- LIGHTBOX (POWIĘKSZANIE ZDJĘĆ) --- */
         .lightbox {
-            display: none; /* Domyślnie ukryte */
+            display: none; 
             position: fixed;
             z-index: 9999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.92); /* Mocno przyciemnione tło */
+            background-color: rgba(0, 0, 0, 0.92); 
             align-items: center;
             justify-content: center;
+            flex-direction: column; /* To gwarantuje, że podpis będzie pod zdjęciem */
         }
 
         .lightbox-content {
@@ -742,7 +743,18 @@ if (isset($_POST['submit'])) {
         .lightbox-close:hover {
             color: var(--accent-yellow);
         }
-
+		
+		.lightbox-caption {
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 300;
+            text-align: center;
+            max-width: 80%;
+            letter-spacing: 0.5px;
+            animation: zoomIn 0.3s ease; /* Podpis pojawia się płynnie razem ze zdjęciem */
+        }
+		
         @keyframes zoomIn {
             from {transform: scale(0.8); opacity: 0;}
             to {transform: scale(1); opacity: 1;}
@@ -1014,15 +1026,19 @@ if (isset($_POST['submit'])) {
         </div>
     </footer>
 
+    <!-- Lightbox (Powiększanie zdjęć) -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" alt="Powiększone zdjęcie">
+        <!-- Nowy element na podpis pod zdjęciem -->
+        <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 	
 	<script>
         document.addEventListener("DOMContentLoaded", function() {
             const lightbox = document.getElementById("lightbox");
             const lightboxImg = document.getElementById("lightbox-img");
+            const lightboxCaption = document.getElementById("lightbox-caption"); // Pobieramy kontener na podpis
             const galleryItems = document.querySelectorAll(".gallery-item img");
             const closeBtn = document.querySelector(".lightbox-close");
 
@@ -1031,6 +1047,7 @@ if (isset($_POST['submit'])) {
                 img.parentElement.addEventListener("click", function() {
                     lightbox.style.display = "flex";
                     lightboxImg.src = img.src;
+                    lightboxCaption.textContent = img.alt; // Wrzucamy atrybut alt do podpisu
                 });
             });
 
@@ -1041,7 +1058,7 @@ if (isset($_POST['submit'])) {
 
             // Zamykanie kliknięciem w ciemne tło (poza zdjęciem)
             lightbox.addEventListener("click", function(e) {
-                if (e.target !== lightboxImg) {
+                if (e.target !== lightboxImg && e.target !== lightboxCaption) {
                     lightbox.style.display = "none";
                 }
             });
