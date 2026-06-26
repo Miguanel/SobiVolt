@@ -24,31 +24,31 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
-    // --- INTERSECTION OBSERVER (Animacje przy przewijaniu) ---
+    // --- INTERSECTION OBSERVER (Animacje przy przewijaniu - w obie strony) ---
     if ('IntersectionObserver' in window) {
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -50px 0px', // Animacja startuje 50px przed dolną krawędzią ekranu
-            threshold: 0.05 // Wystarczy, że 5% elementu jest widoczne, by animacja ruszyła
+            rootMargin: '0px 0px -50px 0px', 
+            threshold: 0.05 
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Element wjeżdża na ekran - pokazujemy
                     entry.target.classList.add('is-visible');
-                    // Przerywamy obserwację po pojawieniu się, by nie migało przy szybkim scrollowaniu
-                    observer.unobserve(entry.target);
+                } else {
+                    // Element znika z ekranu - chowamy z powrotem
+                    entry.target.classList.remove('is-visible');
                 }
             });
         }, observerOptions);
 
-        // Złapanie wszystkich elementów do ożywienia w jedną listę
         const elementsToAnimate = document.querySelectorAll('.gallery-item, .animate-on-scroll');
         elementsToAnimate.forEach(el => {
             observer.observe(el);
         });
     } else {
-        // Gdyby stara przeglądarka nie wspierała tego mechanizmu, pokaż wszystko od razu
         document.querySelectorAll('.animate-on-scroll, .gallery-item').forEach(el => {
             el.classList.add('is-visible');
         });
