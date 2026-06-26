@@ -399,11 +399,6 @@ if (isset($_POST['submit'])) {
             transform: scale(1.08);
         }
 
-        .gallery-item:hover .gallery-overlay {
-            bottom: 0;
-        }
-        }
-
         /* Sekcja: Kontakt + Layout Formularza */
         .contact-layout {
             display: grid;
@@ -768,27 +763,51 @@ if (isset($_POST['submit'])) {
                 font-size: 40px;
             }
         }
+		
+		/* --- ANIMACJE SCROLLOWANIA (INTERSECTION OBSERVER) --- */
+        
+        /* 1. Galeria - automatyczne wysunięcie podpisu */
+        .gallery-item .gallery-overlay {
+            bottom: -100%;
+            transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item.is-visible .gallery-overlay {
+            bottom: 0; /* Opis wjeżdża, gdy zdjęcie pojawi się na ekranie */
+        }
+
+        /* 2. Uniwersalna klasa dla innych elementów (np. kafelków usług) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px); /* Element zaczyna lekko obniżony */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform; /* Optymalizacja wydajności */
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0); /* Płynnie podnosi się na właściwe miejsce */
+        }
     </style>
 </head>
 <body>
 
-    <!-- Pływający widget boczny (Benden) -->
-	<div class="sticky-contact">
-		<a href="tel:+48731892091" class="sticky-item">📞 <span>731 892 091</span></a>
-		<a href="#kontakt" class="sticky-item">✉️ <span>Napisz wiadomość</span></a>
-	</div>
+    <div class="sticky-contact">
+        <a href="tel:+48731892091" class="sticky-item">📞 <span>731 892 091</span></a>
+        <a href="#kontakt" class="sticky-item">✉️ <span>Napisz wiadomość</span></a>
+    </div>
 
     <header>
         <div class="nav-container">
             <a href="#" class="logo-link">
-				<img src="SobiVoltLogo.png" alt="SobiVolt Logo" class="logo-img">
-				<span class="logo-text">Sobi<span class="text-yellow">Volt</span></span>
-			</a>
+                <img src="SobiVoltLogo.png" alt="SobiVolt Logo" class="logo-img">
+                <span class="logo-text">Sobi<span class="text-yellow">Volt</span></span>
+            </a>
             <nav>
-                <a href="#o-nas">O firmie</a>
+                <a href="#o-firmie">O firmie</a>
                 <a href="#uslugi">Usługi</a>
                 <a href="#galeria">Galeria</a>
-                <a href="#kontakt">Kontakt</a>
+                <a href="#kontakt">Contact</a>
             </nav>
         </div>
     </header>
@@ -803,16 +822,13 @@ if (isset($_POST['submit'])) {
         Solidnie • Terminowo • Fachowo
     </div>
 
-    <section id="o-nas" class="section-container">
+    <section id="o-firmie" class="section-container animate-on-scroll">
         <h2 class="section-title">O firmie</h2>
         <div class="about-box">
-            <p>Twój zaufany partner w branży elektroinstalacyjnej
-
-				W SobiVolt wiemy, że instalacja elektryczna to krwiobieg każdego budynku. Odpowiada za codzienny komfort, ale przede wszystkim – za bezpieczeństwo Twoich bliskich, pracowników i mienia. Dlatego naszą pracę opieramy na bezkompromisowej precyzji, aktualnych normach technicznych oraz bogatym doświadczeniu.
-
-				Działamy na terenie całego województwa śląskiego i okolic, obsługując zarówno domy jednorodzinne, mieszkania, jak i obiekty firmowe. Niezależnie od tego, czy potrzebujesz zaprojektować instalację od zera, zmodernizować starą rozdzielnicę, czy pilnie usunąć nagłą awarię w środku nocy – jesteśmy do Twojej dyspozycji!
-
-				Posiadamy aktualne Uprawnienia SEP, co stanowi gwarancję, że każda usługa i każdy wykonany przez nas pomiar są w 100% legalne, bezpieczne i poparte rzetelną wiedzą. Stawiamy na solidność, terminowość i czystość w miejscu pracy. Wybierając SobiVolt, wybierasz spokój na lata.</p>
+            <p>Twój zaufany partner w branży elektroinstalacyjnej<br><br>
+            W SobiVolt wiemy, że instalacja elektryczna to krwiobieg każdego budynku. Odpowiada za codzienny komfort, ale przede wszystkim – za bezpieczeństwo Twoich bliskich, pracowników i mienia. Dlatego naszą pracę opieramy na bezkompromisowej precyzji, aktualnych normach technicznych oraz bogatym doświadczeniu.<br><br>
+            Działamy na terenie całego województwa śląskiego i okolic, obsługując zarówno domy jednorodzinne, mieszkania, jak i obiekty firmowe. Niezależnie od tego, czy potrzebujesz zaprojektować instalację od zera, zmodernizować starą rozdzielnicę, czy pilnie usunąć nagłą awarię w środku nocy – jesteśmy do Twojej dyspozycji!<br><br>
+            Posiadamy aktualne Uprawnienia SEP, co stanowi gwarancję, że każda usługa i każdy wykonany przez nas pomiar są w 100% legalne, bezpieczne i poparte rzetelną wiedzą. Stawiamy na solidność, terminowość i czystość w miejscu pracy. Wybierając SobiVolt, wybierasz spokój na lata.</p>
             <div class="sep-badge">Uprawnienia SEP</div>
         </div>
     </section>
@@ -821,55 +837,55 @@ if (isset($_POST['submit'])) {
         <h2 class="section-title">Nasze Usługi</h2>
         <div class="services-grid">
             
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🏢</div>
                 <h3>Instalacje od Podstaw</h3>
                 <p>Projektujemy instalacje, które wytrzymają lata. Stosujemy nowoczesne rozwiązania, które planujemy z myślą o Twoim komforcie i przyszłym zużyciu energii.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🛠️</div>
                 <h3>Remonty i Modernizacje</h3>
                 <p>Masz starą instalację? Nie ryzykuj. Wymienimy przewody i zabezpieczenia, aby spełniały obecne normy bezpieczeństwa i bez problemu obsługiwały nowoczesne sprzęty.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">⚡</div>
                 <h3>Usuwanie Awarii 24/7</h3>
                 <p>Prąd nie działa? Nie zostawiamy Cię w ciemności. Szybki dojazd do nagłych usterek w każdej sytuacji, aby przywrócić zasilanie w Twoim domu.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🎛️</div>
                 <h3>Wymiana Rozdzielnic</h3>
                 <p>Rozdzielnica to serce Twojej instalacji. Dobierzemy i zamontujemy system, który jest bezpieczny, przejrzysty i chroni Twoją elektronikę przed przepięciami.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">💡</div>
                 <h3>Montaż Oświetlenia</h3>
                 <p>Wydobądź piękno wnętrza dzięki światłu. Montujemy lampy, taśmy LED i osprzęt z chirurgiczną precyzją.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🍳</div>
                 <h3>Płyty Indukcyjne</h3>
                 <p>Profesjonalny montaż z zachowaniem wymogów gwarancyjnych. Podłączymy Twoją płytę szybko, bezpiecznie i wystawimy wymagany wpis do karty gwarancyjnej.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">🛡️</div>
                 <h3>Monitoring i Alarm</h3>
                 <p>Śpij spokojnie. Projektujemy i instalujemy okablowanie pod systemy zabezpieczeń, które faktycznie chronią Twój dobytek</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">📐</div>
                 <h3>Pomiary Elektryczne</h3>
                 <p>Nie daj się zaskoczyć ubezpieczycielowi. Wykonujemy rzetelne pomiary i wystawiamy kompletne protokoły niezbędne przy odbiorach i przeglądach.</p>
             </div>
-			
-			<div class="service-card">
+            
+            <div class="service-card animate-on-scroll">
                 <div class="service-icon">❄️</div>
                 <h3>Montaż Klimatyzacji</h3>
                 <p>Kompleksowa instalacja układów Split i Multi-Split. Przeprowadzamy rygorystyczne próby szczelności, próżniowanie obwodu chłodniczego oraz doprowadzamy dedykowany obwód zasilania z osobnym zabezpieczeniem nadmiarowo-prądowym.</p>
@@ -877,14 +893,12 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    <!-- Sekcja Galerii -->
     <section id="galeria" class="gallery-section">
         <div class="container">
             <h2 class="section-title">Nasze Realizacje</h2>
             <p class="section-subtitle">Zobacz przykłady naszych ostatnich prac instalacyjnych, pomiarowych i wykończeniowych.</p>
 
             <div class="gallery-grid">
-                <!-- Kategoria 1: Rozdzielnice, Automatyka i Pomiary -->
                 <div class="gallery-item">
                     <img src="rozdzielnia.jpeg" alt="Kompleksowa rozdzielnica elektryczna">
                     <div class="gallery-overlay"><span>Montaż i szycie rozdzielnicy</span></div>
@@ -902,7 +916,6 @@ if (isset($_POST['submit'])) {
                     <div class="gallery-overlay"><span>Diagnostyka i pomiary sieci</span></div>
                 </div>
 
-                <!-- Kategoria 2: Oświetlenie, Biały Montaż i Smart Home -->
                 <div class="gallery-item">
                     <img src="schody_lampy_wewn.jpeg" alt="Oświetlenie schodów">
                     <div class="gallery-overlay"><span>Efektowny żyrandol klatki schodowej</span></div>
@@ -954,15 +967,15 @@ if (isset($_POST['submit'])) {
                 <?php endif; ?>
 
                 <form action="#kontakt" method="POST">
-					<div style="display:none;" aria-hidden="true">
-						<label for="website_url">Proszę zostawić to pole puste</label>
-						<input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
-					</div>
+                    <div style="display:none;" aria-hidden="true">
+                        <label for="website_url">Proszę zostawić to pole puste</label>
+                        <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                    </div>
 
-					<div class="form-group">
-						<label for="name">Imię, Nazwisko lub Nazwa firmy</label>
-						<input type="text" id="name" name="name" class="form-control" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
-					</div>
+                    <div class="form-group">
+                        <label for="name">Imię, Nazwisko lub Nazwa firmy</label>
+                        <input type="text" id="name" name="name" class="form-control" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
+                    </div>
                     <div class="form-group">
                         <label for="phone">Numer telefonu</label>
                         <input type="tel" id="phone" name="phone" class="form-control" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ''; ?>" required>
@@ -975,10 +988,10 @@ if (isset($_POST['submit'])) {
                         <label for="message">Treść wiadomości (krótki opis prac)</label>
                         <textarea id="message" name="message" rows="5" class="form-control" required><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : ''; ?></textarea>
                     </div>
-					<div class="form-group checkbox-group">
-						<input type="checkbox" id="rodo" name="rodo" required>
-						<label for="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu obsługi zapytania przez SobiVolt. <a href="#">Polityka prywatności</a>.</label>
-					</div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="rodo" name="rodo" required>
+                        <label for="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu obsługi zapytania przez SobiVolt. <a href="#">Polityka prywatności</a>.</label>
+                    </div>
                     <button type="submit" name="submit" class="btn-submit">Wyślij zgłoszenie</button>
                 </form>
             </div>
@@ -986,14 +999,10 @@ if (isset($_POST['submit'])) {
         </div>
     </section>
 
-    
-
-    <!-- Rozbudowana Stopka -->
     <footer class="site-footer">
         <div class="footer-container">
             
-            <!-- Kolumna 1: Kontakt -->
-            <div class="footer-col">
+            <div class="footer-col animate-on-scroll">
                 <h4>Kontakt</h4>
                 <p><strong>SobiVolt</strong></p>
                 <p>Czyżowice, woj. śląskie</p>
@@ -1001,15 +1010,13 @@ if (isset($_POST['submit'])) {
                 <p>E-Mail: voltixsobina@gmail.com</p>
             </div>
 
-            <!-- Kolumna 2: Godziny otwarcia -->
-            <div class="footer-col">
+            <div class="footer-col animate-on-scroll">
                 <h4>Godziny otwarcia</h4>
                 <p>Poniedziałek – Piątek:<br> 7:30 – 16:30</p>
                 <p>Sobota – Niedziela:<br> Dyżur (Awarie 24/7)</p>
             </div>
 
-            <!-- Kolumna 3: Social Media (Magiczne przyciski) -->
-            <div class="footer-col">
+            <div class="footer-col animate-on-scroll">
                 <h4>Znajdź nas</h4>
                 <div class="social-links">
                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1022,17 +1029,16 @@ if (isset($_POST['submit'])) {
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 SobiVolt. Wszelkie prawa zastrzeżone.</p>
+            <p>© 2026 SobiVolt. Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
 
-    <!-- Lightbox (Powiększanie zdjęć) -->
     <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-close">×</span>
         <img class="lightbox-content" id="lightbox-img" alt="Powiększone zdjęcie">
-        <!-- Nowy element na podpis pod zdjęciem -->
         <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
+
 	
 	<script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -1061,6 +1067,35 @@ if (isset($_POST['submit'])) {
                 if (e.target !== lightboxImg && e.target !== lightboxCaption) {
                     lightbox.style.display = "none";
                 }
+            });
+			
+			// --- INTERSECTION OBSERVER (Animacje przy przewijaniu) ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Uruchamia animację, gdy 15% elementu wejdzie na ekran
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Opcjonalnie: odkomentuj poniższą linię, jeśli chcesz by animacja zagrała tylko raz
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Aktywacja obserwatora dla zdjęć w galerii
+            const galleryItemsObserver = document.querySelectorAll('.gallery-item');
+            galleryItemsObserver.forEach(item => {
+                observer.observe(item);
+            });
+
+            // Aktywacja obserwatora dla wszystkich innych ukrytych elementów
+            const scrollElements = document.querySelectorAll('.animate-on-scroll');
+            scrollElements.forEach(el => {
+                observer.observe(el);
             });
         });
     </script>
