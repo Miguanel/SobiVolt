@@ -821,7 +821,7 @@ if (isset($_POST['submit'])) {
             <div class="gallery-grid">
                 <!-- Kategoria 1: Rozdzielnice, Automatyka i Pomiary -->
                 <div class="gallery-item">
-                    <img src="rozdzielnia.jpg" alt="Kompleksowa rozdzielnica elektryczna">
+                    <img src="rozdzielnia.jpeg" alt="Kompleksowa rozdzielnica elektryczna">
                     <div class="gallery-overlay"><span>Montaż i szycie rozdzielnicy</span></div>
                 </div>
                 <div class="gallery-item">
@@ -829,7 +829,7 @@ if (isset($_POST['submit'])) {
                     <div class="gallery-overlay"><span>Aparatura modułowa w praktyce</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="okablowanie_bezpiecznikow.JPG" alt="Okablowanie bezpieczników">
+                    <img src="okablowanie_bezpiecznikow.jpg" alt="Okablowanie bezpieczników">
                     <div class="gallery-overlay"><span>Precyzyjne układanie przewodów</span></div>
                 </div>
                 <div class="gallery-item">
@@ -847,7 +847,7 @@ if (isset($_POST['submit'])) {
                     <div class="gallery-overlay"><span>Precyzyjny montaż na wysokościach</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="kuchnia_lampy.jpg" alt="Oświetlenie w kuchni">
+                    <img src="kuchnia_lampy.jpeg" alt="Oświetlenie w kuchni">
                     <div class="gallery-overlay"><span>Oświetlenie wyspy kuchennej</span></div>
                 </div>
                 <div class="gallery-item">
