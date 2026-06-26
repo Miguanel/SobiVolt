@@ -703,6 +703,59 @@ if (isset($_POST['submit'])) {
 			}
             .bottom-bar-container { flex-direction: column; gap: 15px; text-align: center; }
         }
+		
+		/* --- LIGHTBOX (POWIĘKSZANIE ZDJĘĆ) --- */
+        .lightbox {
+            display: none; /* Domyślnie ukryte */
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92); /* Mocno przyciemnione tło */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border: 2px solid var(--accent-yellow); /* Żółta ramka SobiVolt */
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            animation: zoomIn 0.3s ease; /* Płynne powiększenie */
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-yellow);
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        /* Poprawka dla mobilnych */
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: 10px;
+                right: 20px;
+                font-size: 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -961,5 +1014,38 @@ if (isset($_POST['submit'])) {
         </div>
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Powiększone zdjęcie">
+    </div>
+	
+	<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const galleryItems = document.querySelectorAll(".gallery-item img");
+            const closeBtn = document.querySelector(".lightbox-close");
+
+            // Otwieranie zdjęcia po kliknięciu
+            galleryItems.forEach(img => {
+                img.parentElement.addEventListener("click", function() {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = img.src;
+                });
+            });
+
+            // Zamykanie krzyżykiem
+            closeBtn.addEventListener("click", function() {
+                lightbox.style.display = "none";
+            });
+
+            // Zamykanie kliknięciem w ciemne tło (poza zdjęciem)
+            lightbox.addEventListener("click", function(e) {
+                if (e.target !== lightboxImg) {
+                    lightbox.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
