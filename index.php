@@ -825,25 +825,25 @@ if (isset($_POST['submit'])) {
                     <div class="gallery-overlay"><span>Montaż i szycie rozdzielnicy</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="bezpieczniki.jpg" alt="Nowoczesna rozdzielnica mieszkaniowa">
+                    <img src="bezpieczniki.jpeg" alt="Nowoczesna rozdzielnica mieszkaniowa">
                     <div class="gallery-overlay"><span>Aparatura modułowa w praktyce</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="okablowanie_bezpiecznikow.jpg" alt="Okablowanie bezpieczników">
+                    <img src="okablowanie_bezpiecznikow.jpeg" alt="Okablowanie bezpieczników">
                     <div class="gallery-overlay"><span>Precyzyjne układanie przewodów</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="pomiar.jpg" alt="Pomiary elektryczne">
+                    <img src="pomiar.jpeg" alt="Pomiary elektryczne">
                     <div class="gallery-overlay"><span>Diagnostyka i pomiary sieci</span></div>
                 </div>
 
                 <!-- Kategoria 2: Oświetlenie, Biały Montaż i Smart Home -->
                 <div class="gallery-item">
-                    <img src="schody_lampy_wewn.jpg" alt="Oświetlenie schodów">
+                    <img src="schody_lampy_wewn.jpeg" alt="Oświetlenie schodów">
                     <div class="gallery-overlay"><span>Efektowny żyrandol klatki schodowej</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="schody_lampy_zewn.jpg" alt="Oświetlenie schodów z góry">
+                    <img src="schody_lampy_zewn.jpeg" alt="Oświetlenie schodów z góry">
                     <div class="gallery-overlay"><span>Precyzyjny montaż na wysokościach</span></div>
                 </div>
                 <div class="gallery-item">
@@ -851,11 +851,11 @@ if (isset($_POST['submit'])) {
                     <div class="gallery-overlay"><span>Oświetlenie wyspy kuchennej</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="pokoj_lampy.jpg" alt="Oświetlenie sufitowe LED">
+                    <img src="pokoj_lampy.jpeg" alt="Oświetlenie sufitowe LED">
                     <div class="gallery-overlay"><span>Oprawy wpuszczane LED</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="przelacznik.jpg" alt="Przełącznik Somfy">
+                    <img src="przelacznik.jpeg" alt="Przełącznik Somfy">
                     <div class="gallery-overlay"><span>Systemy Smart Home (Somfy)</span></div>
                 </div>
             </div>
