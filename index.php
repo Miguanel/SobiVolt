@@ -62,6 +62,7 @@ if (isset($_POST['submit'])) {
 
     <div class="sticky-contact">
         <a href="tel:+48731892091" class="sticky-item">📞 <span>731 892 091</span></a>
+        <a href="sobivolt.vcf" class="sticky-item" download>📇 <span>Zapisz kontakt</span></a>
         <a href="#contact" class="sticky-item">✉️ <span>Napisz wiadomość</span></a>
     </div>
 
@@ -214,8 +215,15 @@ if (isset($_POST['submit'])) {
             
             <div class="contact-info">
                 <h3>Skontaktuj się</h3>
-                <div class="contact-method">📞 Telefon: <span>731 892 091</span></div>
-                <div class="contact-method">✉️ E-mail: <span>voltixsobina@gmail.com</span></div>
+				
+                <div class="contact-method">
+					📞 Telefon: <span>731 892 091</span> 
+					<a href="sobivolt.vcf" download style="margin-left: 15px; font-size: 14px; color: var(--accent-yellow); text-decoration: none; border: 1px solid var(--accent-yellow); padding: 4px 10px; border-radius: 4px; transition: 0.3s;">
+						<i class="fas fa-address-card"></i> Zapisz kontakt
+					</a>
+				</div>
+				<div class="contact-method">✉️ E-mail: <span>voltixsobina@gmail.com</span></div>
+				
                 <div class="contact-method">📍 Obszar: <span>Woj. śląskie i okolice</span></div>
                 
                 <div class="map-container">
